@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {MovieModel} from '../../models/movie.model';
 
 @Component({
   selector: 'app-movie-thumbnail',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-thumbnail.component.less']
 })
 export class MovieThumbnailComponent implements OnInit {
+  @Input() movie: MovieModel;
+  @Output() selectMovie: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+
+  public onThumbClick(): void {
+    this.movie.selected = true;
+    this.selectMovie.emit(this.movie);
   }
 
 }

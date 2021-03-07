@@ -1,1 +1,12 @@
-<p>movie-thumbnail works!</p>
+<div class="movie_thumbnail_container" [ngClass]="{'selected': movie.selected}" (click)="onThumbClick()">
+  <div class="movie_image"
+       [ngStyle]="{'background-image': movie.posterUrl ? 'url(https://image.tmdb.org/t/p/w500' + movie.posterUrl + ')' : 'gray' }">
+  </div>
+  <div class="movie_description">
+    <span>{{movie.title}}</span>
+    <span> ({{movie.releaseDate ? (movie.releaseDate | date: 'MMMM d, y') : ''}})</span>
+  </div>
+  <div class="movie_type">
+    movie
+  </div>
+</div>

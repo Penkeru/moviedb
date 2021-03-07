@@ -1,1 +1,6 @@
-<p>search-bar works!</p>
+<div class="search-container">
+  <input type="text" class="search-input" [(ngModel)]="searchQuery" (keyup)="onChange()"
+         placeholder="{{searchPlaceholder || 'Enter Search...'}}">
+  <i class="search-icon pi pi-search"></i>
+  <i class="search-icon pi pi-copy" (click)="copyState($event)"></i>
+</div>
