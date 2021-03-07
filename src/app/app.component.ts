@@ -41,7 +41,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.isLoadingMovie = true;
     this.movieApiService.getMovieCredits(movie.id).subscribe((response) => {
       this.selectedMovie.movieMembers = response;
-      debugger;
       this.isLoadingMovie = false;
     });
 
