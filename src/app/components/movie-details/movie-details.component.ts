@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {MovieModel, StaffRoleENUM} from '../../models/movie.model';
 
 @Component({
   selector: 'app-movie-details',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-details.component.less']
 })
 export class MovieDetailsComponent implements OnInit {
+  @Input() currentMovie: MovieModel;
+  roleTypes = StaffRoleENUM;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -24,9 +24,7 @@ export class SearchBarComponent implements OnInit {
 
 
   public onChange(): void {
-    if (this.searchQuery && this.searchQuery.length >= 3) {
-      this.debounceFunc();
-    }
+    this.debounceFunc();
   }
 
   public copyState(event: Event): void {
@@ -35,7 +33,9 @@ export class SearchBarComponent implements OnInit {
   }
 
   public search() {
-    this.searchQueryChange.emit(this.searchQuery);
+    if (this.searchQuery.length >= 3) {
+      this.searchQueryChange.emit(this.searchQuery);
+    }
   }
 
 

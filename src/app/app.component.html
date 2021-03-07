@@ -15,7 +15,7 @@
   <div class="movie_details_container">
     <p-progressSpinner *ngIf="isLoadingMovie"></p-progressSpinner>
     <div class="movie_details" *ngIf="!isLoadingMovie">
-
+      <app-movie-details [currentMovie]="selectedMovie"></app-movie-details>
     </div>
   </div>
 </div>

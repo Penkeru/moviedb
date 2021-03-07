@@ -6,6 +6,7 @@ export interface MovieModel {
   title: string;
   grade: number;
   selected?: boolean;
+  movieMembers: any;
 }
 
 export interface MoviesQueryResponse {
@@ -13,4 +14,12 @@ export interface MoviesQueryResponse {
   totalResults: number;
   totalPages: number;
   moviesList: MovieModel[];
+}
+
+export enum StaffRoleENUM {
+  ACTORS = 'Acting',
+  WRITER = 'Writing',
+  PRODUCTION = 'Production',
+  DIRECTOR = 'Directing'
+
 }

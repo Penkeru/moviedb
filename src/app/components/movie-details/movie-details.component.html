@@ -1,19 +1,32 @@
-<div class="movie_details_container">
+<div class="movie_details_container" *ngIf="currentMovie">
   <div class="movie_details_header">
     <div class="movie_name">
-      <span class="title"></span>
-      <span class="movie_year"></span>
+      <span class="title">{{currentMovie.title}}</span>
+      <span class="movie_year"> {{currentMovie.releaseDate | date: 'MMMM d, y'}}</span>
     </div>
     <div class="overview">
 
     </div>
   </div>
   <div class="movie_details_body">
-    <div class="movie_poster">
-
+    <div class="movie_poster"
+         [ngStyle]="{'background-image': currentMovie.posterUrl ? 'url(https://image.tmdb.org/t/p/w500' + currentMovie.posterUrl + ')' : 'gray' }">
     </div>
     <div class="movie_info">
+      <span class="label">Summary:</span> {{currentMovie.overview}}
+      <br/>
+      <span
+        class="label">Directors: </span> {{currentMovie.movieMembers.crew[roleTypes.DIRECTOR] ? currentMovie.movieMembers.crew[roleTypes.DIRECTOR].join(' , ') : ''}}
+      <span>.</span>
 
+      <br/>
+      <span
+        class="label">Actors: </span> {{currentMovie.movieMembers.crew[roleTypes.ACTORS] ? currentMovie.movieMembers.crew[roleTypes.ACTORS].join(' , ') : ''}}
+      <span>.</span>
+      <br/>
+      <div class="movie_score">
+        {{currentMovie.grade}}
+      </div>
     </div>
   </div>
 </div>

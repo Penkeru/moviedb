@@ -36,6 +36,21 @@ export class MovieApiService {
   }
 
   public getMovieCredits(movieId: number) {
-    return this.http.get(`https://api.themoviedb.org/3/movie/${movieId}/credits`);
+    return this.http.get(`https://api.themoviedb.org/3/movie/${movieId}/credits`).pipe(map((response: any) => {
+
+      const newResponse = {
+        actors: response.cast.map(actor => actor.name),
+        crew: {}
+      };
+
+      for (const member of response.crew) {
+        if (newResponse.crew[member.known_for_department]) {
+          newResponse.crew[member.known_for_department].push(member.name);
+        } else {
+          newResponse.crew[member.known_for_department] = [member.name];
+        }
+      }
+      return newResponse;
+    }));
   }
 }
